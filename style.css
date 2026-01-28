@@ -1,0 +1,93 @@
+:root {
+  --bg-color: #e0e0e0;
+  --text-color: #212121;
+  --accent-color: #00e676;
+  /* Green for success */
+  --danger-color: #ff4444;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-color);
+}
+
+#gameCanvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+#ui-layer {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  /* Premium gradient text */
+  background: linear-gradient(45deg, var(--accent-color), #00ccff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+p {
+  margin: 5px 0;
+  opacity: 0.8;
+}
+
+#score {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+#game-over h2 {
+  font-size: 3rem;
+  color: var(--accent-color);
+  margin: 0 0 20px 0;
+}
+
+button {
+  background: var(--accent-color);
+  color: #000;
+  border: none;
+  padding: 12px 32px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--accent-color);
+}
+
+.hidden {
+  display: none !important;
+}
