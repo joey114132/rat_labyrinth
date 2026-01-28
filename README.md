@@ -1,54 +1,18 @@
-# Lab Rat Escape - Project Documentation
+# 실험실 쥐 탈출 게임 (Lab Rat Escape)
 
-This game is a web-based maze escape simulation where you control a rat to find the exit. It is built using **Vite** and **Vanilla JavaScript**.
+이 프로젝트는 웹 기반의 미로 탈출 게임입니다. 플레이어는 실험실 쥐가 되어 복잡한 미로를 통과해 탈출구를 찾아야 합니다.
 
-## Project Structure & File Guide
+## 게임 방법 (How to Play)
 
-### 1. [index.html](./index.html)
-**Purpose**: The main entry point of the web page.
-- **Canvas**: Contains the `<canvas id="gameCanvas">` element where the game is rendered.
-- **UI Overlay**:
-  - `#ui-layer`: Displays the title and instructions.
-  - `#game-over`: The "Congratulations" popup with the "Retry" button. It is placed outside the UI layer to ensure proper centering.
+1. **게임 시작**: 웹페이지를 열면 게임이 자동으로 시작됩니다.
+2. **조작법**: 키보드 화살표 키를 사용하세요.
+   - **위쪽 화살표 (↑)**: 앞으로 가기 (가속)
+   - **아래쪽 화살표 (↓)**: 뒤로 가기 (감속/후진)
+   - **왼쪽/오른쪽 화살표 (←/→)**: 방향 회전
+3. **목표**: 미로를 탐색하여 오른쪽 아래에 있는 **초록색 탈출구**를 찾으세요.
+4. **승리**: 탈출구에 도착하면 축하 메시지와 함께 폭죽 효과가 나타납니다. "Retry" 버튼을 누르면 새로운 미로에서 다시 시작할 수 있습니다.
 
-### 2. [style.css](./style.css)
-**Purpose**: Handles global styling and themes.
-- Defines the "Sterile Lab" aesthetic using CSS variables.
-- Centers the `#game-over` popup using absolute positioning and transforms.
-- styles the "Retry" button with hover effects.
-
-### 3. [main.js](./main.js)
-**Purpose**: The JavaScript entry point.
-- Imports the `Game` class.
-- Initializes the game instance on the `#gameCanvas`.
-
----
-
-## Source Code (`src/`)
-
-### 4. [src/Game.js](./src/Game.js)
-**Purpose**: The main game controller.
-- **Maze Generation**: Uses a **Recursive Backtracker** algorithm in `#generateTileMaze` to create a new random maze layout every time.
-- **Game Loop**: The `#animate` method runs continuously to update physics and redraw the screen.
-- **Collision Logic**: Implements "Split-Axis" collision checks. It moves the rat along X, checks collision (and stops if hit), then moves along Y. This prevents sticking and allows sliding along walls.
-- **Fireworks**: The `#updateFireworks` method renders a particle celebration effect when the user wins.
-
-### 5. [src/Rat.js](./src/Rat.js)
-**Purpose**: The player character logic.
-- **Physics**: Implements acceleration, friction, and velocity.
-  - **`update()`**: Calculates the new position based on speed and angle.
-  - **`#move()`**: Handles Arrow Key inputs. Up/Down changes speed (acceleration), Left/Right changes angle (rotation).
-- **Rendering**: Draws the rat using HTML5 Canvas paths (brown body, pink tail, ears).
-
-### 6. [src/Wall.js](./src/Wall.js)
-**Purpose**: Represents individual wall blocks.
-- **Visuals**: simple dark rectangles that form the maze structure.
-- **Collision**: Provides `getPolygon()` to help detect intersections with the rat.
-
-### 7. [src/utils.js](./src/utils.js)
-**Purpose**: Math helper functions.
-- **`polysIntersect(poly1, poly2)`**: The core function for collision detection. It checks if any edge of the rat's shape overlaps with any edge of a wall.
-
-## Deployment
-This project is configured for **Netlify**.
-- `netlify.toml`: Tells Netlify to build using `npm run build` and publish the `dist` folder.
+## 주요 기능
+- **랜덤 미로 생성**: 매번 플레이할 때마다 새로운 미로가 만들어집니다.
+- **부드러운 조작감**: 물리 엔진이 적용되어 쥐가 부드럽게 가속하고 회전합니다.
+- **반응형 충돌 시스템**: 벽에 부딪혀도 멈추지 않고 부드럽게 미끄러지며 이동할 수 있습니다.
