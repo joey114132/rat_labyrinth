@@ -10,7 +10,7 @@ export class Rat {
     this.maxSpeed = 2;
     this.friction = 0.05;
     this.acceleration = 0.1;
-    this.turnSpeed = 0.06;
+    this.turnSpeed = 0.02;
 
     this.controls = {
       ArrowUp: false,
