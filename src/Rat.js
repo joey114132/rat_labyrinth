@@ -7,10 +7,10 @@ export class Rat {
     this.speed = 0;
     this.angle = 0;
     // Slower speed for precise maze navigation
-    this.maxSpeed = 2;
-    this.friction = 0.05;
-    this.acceleration = 0.1;
-    this.turnSpeed = 0.02;
+    this.maxSpeed = 1.0;
+    this.friction = 0.025;
+    this.acceleration = 0.05;
+    this.turnSpeed = 0.01;
 
     this.controls = {
       ArrowUp: false,
